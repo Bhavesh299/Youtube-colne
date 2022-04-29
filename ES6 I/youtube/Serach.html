@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+      *{
+    margin:0;
+    padding:0;
+    box-sizing: border-box;
+}
+
+*:focus{
+    outline:none;
+
+}
+body{
+    position:relative;
+    background-color:#f0f0f0;
+     font-family:roboto,sans-serif;
+}
+.navbar{
+    position: fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:60px;
+    background-color:#fff;
+    display:flex;
+    align-items:center;
+    padding:0 2.5vw;
+}
+.toggle-btn{
+    width:20px;
+    height:10px;
+    position:relative;
+    cursor:pointer;
+    background:black;
+}
+.toggle-btn>span{
+    position:absolute;
+    width:100%;
+    height:2px;
+    top:50%;
+    transform:translateY(-50%);
+    background:#979797;
+} 
+.toggle-btn>span:nth-child(1){
+    top:0
+}
+.toggle-btn>span:nth-child(3){
+    top:100%;
+} 
+.logo{
+    height:70px;
+   /* margin-top:100px; */
+    margin:7px 30px 0;
+}
+.search-box{
+    position:relative;
+    max-width:500px;
+    width:70%;
+    height:40px;
+    display:flex;
+    margin-left:200px;
+}
+.search-bar{
+    width:85%;
+    height:100%;
+    border:2px solid #dbdbdb;
+    padding:0 20px;
+    font-size:16px;
+    text-transform:capitalize;
+}
+.search-btn{
+    width:15%;
+    height:100%;
+    background:#f0f0f0;
+    border:2px solid #dbdbdb;
+    padding:5px 0;
+    border-left:none;
+}
+.search-btn>img{
+    height:100%;
+}
+.user-options{
+    height:35px;
+    display:flex;
+    margin-left:auto;
+    align-items:center;
+}
+.user-options>.icon{
+    height:90%;
+    margin-right:30px;
+    cursor:pointer;
+
+}
+.user-dp{
+    cursor:pointer;
+    height:30px;
+    width:30px; 
+    border-radius:50%;
+    overflow:hidden;
+}
+.user-dp img{
+    width:100%;
+    height:100%;
+    object-fit:cover
+}
+
+/* //sidebar */
+
+.side-bar{
+    position:fixed;
+    top:60px;
+    left:0;
+    min-width:250;
+    width:250px;
+    height:calc(100vh-60px);
+    background:#fff;
+    padding-right:10px;
+}
+.links{
+    display:block;
+    width:100%;
+    padding:10px 20px;
+    display:flex;
+   align-items:center;
+   text-transform: capitalize;
+   color:#242424;
+   font-size:14px;
+   font-weight:500px;
+   text-decoration:none
+}
+.links>img{
+  height:25px;
+  margin-right:20px;
+}
+.links:hover,.links.active{
+    background: rgba(0, 0, 0, 0.1);
+}
+.seperator{
+    border:none;
+    border-bottom:1px solid rgba(0, 0, 0, 0.1);
+    margin:20px 0;
+}
+
+/* filters */
+
+.filters{
+    position:fixed;
+    left:250px;
+    top:60px;
+    width:calc(100% - 250px);
+    height:60px;
+    background:#fff;
+    border-top:1px solid #dbdbdb;
+    border-bottom:1px solid #dbdbdb;
+    display:flex;
+    align-items:center;
+    overflow-x:auto;
+    overflow-y:hidden;
+}
+.filters::-webkit-scrollbar{
+    display:none;
+}
+.filter-options{
+    flex:0 0 auto;
+    padding:10px 20px;
+    border-radius:50px;
+    background:#f0f0f0;
+    border:1px solid #dbdbdb;
+    margin-right:10px;
+
+}
+  /*video */
+
+#searchResultDiv{
+    width:calc(100% - 250px);
+    margin-top:120px;
+    margin-left:250px;
+    padding:20px;
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    grid-gap:20px 5px;
+    overflow-x:hidden;
+}
+.Title{
+    margin-top:3px;
+}
+.Channel{
+    margin-top:10px;
+}
+.filters>button:hover{
+    color: white;
+    background-color: black;
+}
+
+
+    </style>
+</head>
+<body>
+  
+  <nav class="navbar">
+    <div class="toggle-btn">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+    <img style="margin-top: -9px;" onclick="window.location.href='youtube.html'"  src="https://images.indianexpress.com/2017/08/youtube_logo_new-759.jpg" class="logo" alt="" />
+
+    <div class="search-box">
+      <input type="text" class="search-bar" placeholder="search" />
+      <button onclick="searchVideo()" class="search-btn"><img src="https://cdn-icons-png.flaticon.com/128/54/54481.png" alt=""></button>
+      <img src="https://t3.ftcdn.net/jpg/00/97/00/12/240_F_97001247_ODUrMfjkohMPG67M8BeKv1uypHk1jsUx.jpg" alt="">
+    </div>
+    <div class="user-options">
+      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTc5VNM74eYurSXiDCntPKGtmOiWXqozRt0ZA&usqp=CAU" class="icon" alt="" />
+      <img src="https://www.pngitem.com/pimgs/m/11-115098_grid-icon-colorfulness-hd-png-download.png" class="icon" alt="" />
+      <img src="https://t4.ftcdn.net/jpg/01/08/24/99/240_F_108249947_UMBLfSCpTWU6AGiUz0F7a524koG3eO0z.jpg" class="icon" alt="" />
+      <div class="user-dp">
+        <img src="https://thumbs.dreamstime.com/b/default-avatar-profile-icon-vector-default-avatar-profile-icon-vector-social-media-user-image-vector-illustration-227787227.jpg" alt="" />
+      </div>
+    </div>
+  </nav>
+  <!-- sidebar -->
+  <div class="side-bar">
+    <a href="#" class="links" onclick="window.location.href='youtube.html'"><img src="https://cdn-icons-png.flaticon.com/128/1946/1946436.png" alt="">home</a>
+    <a href="#" class="links"><img src="https://cdn-icons-png.flaticon.com/128/77/77521.png" alt="">explore</a>
+    <a href="#" class="links"><img src="https://t3.ftcdn.net/jpg/01/72/22/52/240_F_172225270_QtBzpfx2g0I78X1XZ2VxL5FgTeAGt4p9.jpg        " alt="">subscription</a>
+
+    <hr class="seperator">
+    <a href="#" class="links active"><img src="https://cdn-icons.flaticon.com/png/128/2989/premium/2989835.png?token=exp=1644517191~hmac=62e66f499c0ae1fcbe03b09bbee4f17f" alt="">library</a>
+    <a href="#" class="links"><img src="https://cdn-icons.flaticon.com/png/128/2961/premium/2961948.png?token=exp=1644517251~hmac=b8c948947b02ce3578ba5adee99670be" alt="">history</a>
+    <a href="#" class="links"><img src="https://t3.ftcdn.net/jpg/03/45/09/72/240_F_345097247_HKfpq7cWx50F1ohDCCVCgSSsIWYP87eG.jpg" alt="">your video</a>
+    <a href="#" class="links"><img src="https://cdn-icons-png.flaticon.com/128/2088/2088617.png " alt="">watch later</a>
+    <a href="#" class="links"><img src="https://t4.ftcdn.net/jpg/00/97/00/09/240_F_97000994_agjCws4sP5BRmvWCaALly7z3tXZGxuXO.jpg        " alt="">like video</a>
+    <a href="#" class="links"><img src="https://t4.ftcdn.net/jpg/04/03/18/15/240_F_403181548_94NP0b7ooowJRzB2srpIewpYI0rYTCsS.jpg" alt="">show more</a>
+  </div>
+  <!-- filters -->
+  <div class="filters">
+    <button class="filter-options">All</button>
+    <button class="filter-options">Css</button>
+    <button class="filter-options">Web Development</button>
+    <button class="filter-options">Entertainment</button>
+    <button class="filter-options">Marvel</button>
+    <button class="filter-options">Javascript</button>
+    <button class="filter-options">Artificial intelligence</button>
+    <button class="filter-options">Machine Learning</button>
+    <button class="filter-options">Trending</button>
+    <button class="filter-options">Masai School</button>
+    <button class="filter-options">Study IQ</button>
+    <button class="filter-options">Pro Kabaddi</button>
+    <button class="filter-options">Python</button>
+    <button class="filter-options">Upsc</button>
+  </div>
+    <div id="searchResultDiv"></div>
+</body>
+</html>
+<script>
+  let API_KEY = `AIzaSyDF4Z46J4NQVIgkh9bOt0m_Ac22wrWx9xI`
+
+  async function searchVideo() {
+  try {
+    let userInput = JSON.parse(localStorage.getItem("videosSech"))
+     let res = await fetch(
+      `https://youtube.googleapis.com/youtube/v3/search?key=${API_KEY}&q=${userInput}&part=id%2C+snippet&type=video&maxResults=35`,
+    )
+
+    let data = await res.json()
+    // console.log(data)
+    let videosList = data.items
+    // console.log(videosList)
+    displayData(videosList)
+  } catch (err) {
+    console.log(err)
+  }
+}
+searchVideo()
+
+const container = document.getElementById("searchResultDiv")
+
+
+const displayData = (videosList) => {
+  // console.log(videosList)
+  container.innerHTML = null
+  videosList.forEach((video) => {
+    console.log(video)
+    const {
+      snippet:{thumbnails:{medium:{url}},title,channelTitle},
+    } = video
+
+    let videoCard = document.createElement('button')
+    videoCard.addEventListener('click', function () {
+      localStorage.setItem('mediaId',JSON.stringify(video.id.videoId))
+      window.location.href = "./One.html"
+      container.innerHTML=""
+      // Refreshdata(video.id , video.snippet.title ,  video.snippet.channelTitle)
+    })
+
+    let img = document.createElement('img')
+    img.src = video.snippet.thumbnails.medium.url
+
+    let Title = document.createElement('h5')
+    Title.innerHTML = video.snippet.title
+    Title.setAttribute('class', 'Title')
+
+    let Channel = document.createElement('p')
+    Channel.innerHTML = video.snippet.channelTitle
+    Channel.setAttribute('class', 'Channel')
+
+    videoCard.append(img, Title, Channel)
+    container.append(videoCard)
+  })
+ }
+//  async function randomdata() {
+//   try {
+//     let res = await fetch(
+//       `https://www.googleapis.com/youtube/v3/videos?chart=mostPopular&key=${API_KEY}&type=video&part=snippet&maxResults=24`,
+//     )
+
+//     let data = await res.json()
+//     // console.log(data)
+//     let videosList = data.items
+//     displayData(videosList)
+//     // console.log(videosList)
+//   } catch (err) {
+//     console.log(err)
+//   }
+// }
+// randomdata()
+
+</script>

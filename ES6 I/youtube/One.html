@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+           *{
+    margin:0;
+    padding:0;
+    box-sizing: border-box;
+}
+
+*:focus{
+    outline:none;
+
+}
+body{
+    position:relative;
+    background-color:#f0f0f0;
+     font-family:roboto,sans-serif;
+}
+.navbar{
+    position: fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:60px;
+    background-color:#fff;
+    display:flex;
+    align-items:center;
+    padding:0 2.5vw;
+}
+.toggle-btn{
+    width:30px;
+    height:10px;
+    position:relative;
+    cursor:pointer;
+    background:black;
+}
+.toggle-btn>span{
+    position:absolute;
+    width:100%;
+    height:2px;
+    top:50%;
+    transform:translateY(-50%);
+    background:#979797;
+} 
+.toggle-btn>span:nth-child(1){
+    top:0
+}
+.toggle-btn>span:nth-child(3){
+    top:100%;
+} 
+.logo{
+    height:70px;
+   /* margin-top:100px; */
+    margin:7px 30px 0;
+}
+.search-box{
+    position:relative;
+    max-width:500px;
+    width:70%;
+    height:40px;
+    display:flex;
+    margin-left:200px;
+}
+.search-bar{
+    width:85%;
+    height:100%;
+    border:2px solid #dbdbdb;
+    padding:0 20px;
+    font-size:16px;
+    text-transform:capitalize;
+}
+.search-btn{
+    width:15%;
+    height:100%;
+    background:#f0f0f0;
+    border:2px solid #dbdbdb;
+    padding:5px 0;
+    border-left:none;
+}
+.search-btn>img{
+    height:100%;
+}
+.user-options{
+    height:35px;
+    display:flex;
+    margin-left:auto;
+    align-items:center;
+}
+.user-options>.icon{
+    height:90%;
+    margin-right:30px;
+    cursor:pointer;
+
+}
+.user-dp{
+    cursor:pointer;
+    height:30px;
+    width:30px; 
+    border-radius:50%;
+    overflow:hidden;
+}
+.user-dp img{
+    width:100%;
+    height:100%;
+    object-fit:cover
+}
+
+/* //sidebar */
+
+.side-bar{
+    position:fixed;
+    top:60px;
+    left:0;
+    min-width:250;
+    width:250px;
+    height:calc(100vh-60px);
+    background:#fff;
+    padding-right:10px;
+}
+#container{
+  margin-top: 80px;
+  margin-left: 20px;
+}
+
+    </style>
+  </head>
+  <body>
+    <nav class="navbar">
+      <div class="toggle-btn">
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+      <img style="margin-top: -9px;" onclick="window.location.href='youtube.html'"  src="https://images.indianexpress.com/2017/08/youtube_logo_new-759.jpg" class="logo" alt="" />
+      <div class="search-box">
+        <input type="text" class="search-bar" placeholder="search" />
+        <button onclick="searchVideo()" class="search-btn"><img src="https://cdn-icons-png.flaticon.com/128/54/54481.png" alt=""></button>
+        <img src="https://t3.ftcdn.net/jpg/00/97/00/12/240_F_97001247_ODUrMfjkohMPG67M8BeKv1uypHk1jsUx.jpg" alt="">
+      </div>
+      <div class="user-options">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTc5VNM74eYurSXiDCntPKGtmOiWXqozRt0ZA&usqp=CAU" class="icon" alt="" />
+        <img src="https://www.pngitem.com/pimgs/m/11-115098_grid-icon-colorfulness-hd-png-download.png" class="icon" alt="" />
+        <img src="https://t4.ftcdn.net/jpg/01/08/24/99/240_F_108249947_UMBLfSCpTWU6AGiUz0F7a524koG3eO0z.jpg" class="icon" alt="" />
+        <div class="user-dp">
+          <img src="https://thumbs.dreamstime.com/b/default-avatar-profile-icon-vector-default-avatar-profile-icon-vector-social-media-user-image-vector-illustration-227787227.jpg" alt="" />
+        </div>
+      </div>
+    </nav>
+    <div id="container"></div>
+   
+  </body>
+</html>
+<script>
+  const body = document.getElementById("container")
+  function showvideo() {
+    const id = JSON.parse(localStorage.getItem('mediaId'))
+
+    const vieodiv = document.createElement('div')
+    vieodiv.innerHTML = `<iframe width="560" height="315" src="https://www.youtube.com/embed/${id}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`
+    body.append(vieodiv)
+  }
+  showvideo()
+</script>
